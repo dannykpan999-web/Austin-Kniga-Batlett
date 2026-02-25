@@ -27,7 +27,7 @@ export const personalInfo: PersonalInfo = {
     first: "Austin",
     last: "Bartlett"
   },
-  title: "Senior Full Stack Developer",
+  title: "Senior Full-Stack Engineer building scalable, high-performance web and mobile apps, focused on clean architecture and maintainability",
   bio: {
     short: "",
     long: [
