@@ -11,6 +11,7 @@ import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
 import Footer from '@/components/Footer';
 import ThemeToggle from '@/components/ThemeToggle';
+import AIChatWidget from '@/components/AIChatWidget';
 
 const Index: React.FC = () => {
   // Adjust scrollbar on mount
@@ -61,6 +62,8 @@ const Index: React.FC = () => {
         </main>
         
         <Footer />
+        <ThemeToggle />
+        <AIChatWidget />
       </motion.div>
     </AnimatePresence>
   );
