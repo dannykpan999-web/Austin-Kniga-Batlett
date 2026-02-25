@@ -118,7 +118,7 @@ const Hero: React.FC = () => {
           </motion.h1>
           
           <motion.div 
-            className="h-8 sm:h-10 md:h-12 lg:h-14 my-4 sm:my-6 md:my-8"
+            className="min-h-[4rem] sm:min-h-[5rem] md:min-h-[6rem] lg:min-h-[7rem] my-4 sm:my-6 md:my-8"
             variants={itemVariants}
           >
             <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-body font-medium text-center text-white/95 tracking-wide">
