@@ -18,7 +18,7 @@ export const projectsData: Project[] = [
       "Deployed containerized modules for all core services with zero-downtime blue-green deployments via GitHub Actions and AWS.",
       "Implemented a dual-path KYC flow with document scanning, liveness detection, and 2FA using Alpaca APIs.",
       "Integrated Plaid for instant ACH transfers and Stripe for automated subscription billing (freemium → paid).",
-      "Used Next.js SSR and WebSockets to achieve sub-200ms live updates and <1s page loads.",
+      "Used Next.js SSR and WebSockets to achieve sub-200ms live updates and under 1s page loads.",
       "Leveraged Elastic for log aggregation and PostHog for real-time analytics and anomaly tracking."
     ],
     tags: ["React", "Node.js", "REST API", "PostgreSQL", "Docker", "Elastic", "Framer"],
