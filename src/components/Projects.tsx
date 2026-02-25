@@ -91,7 +91,7 @@ const Projects: React.FC = () => {
                         className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-300"
                       />
                       {project.featured && (
-                      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 flex items-center gap-1 sm:gap-2 shadow-lg bg-white/20 backdrop-blur-sm border border-white/30">
+                      <div className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white text-xs sm:text-sm px-2 sm:px-3 py-1 sm:py-2 flex items-center gap-1 sm:gap-2 shadow-lg bg-blue-600 border border-blue-400">
                         <Star size={14} className="sm:w-4 sm:h-4" />
                         <span className="font-medium">Featured</span>
                       </div>
