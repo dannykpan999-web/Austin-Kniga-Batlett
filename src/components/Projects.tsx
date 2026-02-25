@@ -117,8 +117,8 @@ const Projects: React.FC = () => {
                       <CardContent className="p-4 sm:p-6 pt-0 flex-1 flex flex-col justify-end">
                         <div className="flex flex-wrap gap-1 sm:gap-2">
                           {project.tags.map((tag, index) => (
-                            <Badge 
-                              key={index} 
+                            <Badge
+                              key={index}
                               variant="outline"
                               className="text-xs sm:text-sm font-body font-medium py-1 sm:py-2 px-2 sm:px-3 transition-all text-white/90 border-white/20 bg-white/10 backdrop-blur-sm hover:bg-white/20 hover:border-white/30"
                             >
@@ -126,6 +126,19 @@ const Projects: React.FC = () => {
                             </Badge>
                           ))}
                         </div>
+                        {project.liveUrl && (
+                          <div className="mt-4">
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm border border-white/20 text-white text-sm font-body font-medium hover:bg-white/20 hover:border-white/30 transition-all duration-300"
+                            >
+                              <ExternalLink size={16} />
+                              Live Demo
+                            </a>
+                          </div>
+                        )}
                       </CardContent>
                     </div>
                   </div>

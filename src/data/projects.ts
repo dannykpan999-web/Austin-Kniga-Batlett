@@ -11,6 +11,37 @@ export interface Project {
 
 export const projectsData: Project[] = [
   {
+    id: 11,
+    title: "AlphaAI Capital – AI-Powered Trading Platform",
+    description: [
+      "Designed and built the platform's full feature set—authentication, AI strategy simulation, trading, payments, analytics, and notifications.",
+      "Deployed containerized modules for all core services with zero-downtime blue-green deployments via GitHub Actions and AWS.",
+      "Implemented a dual-path KYC flow with document scanning, liveness detection, and 2FA using Alpaca APIs.",
+      "Integrated Plaid for instant ACH transfers and Stripe for automated subscription billing (freemium → paid).",
+      "Used Next.js SSR and WebSockets to achieve sub-200ms live updates and <1s page loads.",
+      "Leveraged Elastic for log aggregation and PostHog for real-time analytics and anomaly tracking."
+    ],
+    tags: ["React", "Node.js", "REST API", "PostgreSQL", "Docker", "Elastic", "Framer"],
+    image: "/img/11.jpg",
+    liveUrl: "https://www.alphaai.capital/",
+    featured: true
+  },
+  {
+    id: 12,
+    title: "Yaana Technologies – Cloud BI System for Roaming Analytics",
+    description: [
+      "Converted the Desktop app to a React + Django web platform.",
+      "Built interactive dashboards for deals, traffic, budgets, and financial reports.",
+      "Implemented advanced forecasting & telecom charging models in Python.",
+      "Created fast data pipelines using Pandas and optimizing performance with Redis caching.",
+      "Integrated with the legacy system for a smooth transition and zero downtime."
+    ],
+    tags: ["React", "Python", "Django", "Pandas", "Oracle/PostgreSQL", "Redis"],
+    image: "/img/12.png",
+    liveUrl: "https://www.yaanatech.com/",
+    featured: true
+  },
+  {
     id: 1,
     title: "NFT Marketplace – Decentralized Trading Platform",
     description: [
