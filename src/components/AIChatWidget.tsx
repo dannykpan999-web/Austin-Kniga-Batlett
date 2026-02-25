@@ -118,7 +118,7 @@ const AIChatWidget: React.FC = () => {
 
       const data = await response.json();
       const assistantContent =
-        data.choices?.[0]?.message?.content || 'Sorry, I could not generate a response.';
+        data.content || 'Sorry, I could not generate a response.';
 
       setMessages([
         ...updatedMessages,

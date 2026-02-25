@@ -10,10 +10,10 @@ export default async function handler(req: Request) {
     });
   }
 
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-  if (!OPENAI_API_KEY) {
-    return new Response(JSON.stringify({ error: 'OpenAI API key not configured' }), {
+  if (!GEMINI_API_KEY) {
+    return new Response(JSON.stringify({ error: 'Gemini API key not configured' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
@@ -29,19 +29,38 @@ export default async function handler(req: Request) {
       });
     }
 
-    const response = await fetch('https://api.openai.com/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-      },
-      body: JSON.stringify({
-        model: 'gpt-4o-mini',
-        messages,
-        max_tokens: 500,
+    // Extract system prompt from messages
+    const systemMessage = messages.find((m: { role: string }) => m.role === 'system');
+    const chatMessages = messages.filter((m: { role: string }) => m.role !== 'system');
+
+    // Convert OpenAI-style messages to Gemini format
+    const contents = chatMessages.map((m: { role: string; content: string }) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }));
+
+    const body: Record<string, unknown> = {
+      contents,
+      generationConfig: {
+        maxOutputTokens: 500,
         temperature: 0.7,
-      }),
-    });
+      },
+    };
+
+    if (systemMessage) {
+      body.systemInstruction = {
+        parts: [{ text: systemMessage.content }],
+      };
+    }
+
+    const response = await fetch(
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_API_KEY}`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      }
+    );
 
     if (!response.ok) {
       const errorText = await response.text();
@@ -52,7 +71,11 @@ export default async function handler(req: Request) {
     }
 
     const data = await response.json();
-    return new Response(JSON.stringify(data), {
+
+    // Extract text from Gemini response and return in a simple format
+    const text = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.';
+
+    return new Response(JSON.stringify({ content: text }), {
       status: 200,
       headers: { 'Content-Type': 'application/json' },
     });
